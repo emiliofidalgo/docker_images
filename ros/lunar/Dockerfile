@@ -1,8 +1,9 @@
-ARG USR=emilio
-ARG DEBIAN_FRONTEND=noninteractive
-
 # Ubuntu Xenial
 FROM ubuntu:16.04
+
+ARG USR
+ENV USR ${USR:-emilio}
+ARG DEBIAN_FRONTEND=noninteractive
 
 # Labels to identify the image
 LABEL maintainer="Emilio Garcia-Fidalgo"
