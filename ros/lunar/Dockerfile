@@ -34,17 +34,17 @@ RUN apt-get install -y \
 RUN rosdep init
 
 # Adding a group
-RUN groupadd -r ${USR}
+RUN groupadd -r $USR
 # Adding a user
-RUN useradd --no-log-init --create-home --shell /bin/bash --system --gid ${USR} ${USR}
+RUN useradd --no-log-init --create-home --shell /bin/bash --system --gid $USR $USR
 # Setting the corresponding password
-RUN echo '${USR}:${USR}' | chpasswd
+RUN echo '$USR:$USR' | chpasswd
 # Adding the user to sudo group
-RUN adduser ${USR} sudo
+RUN adduser $USR sudo
 
 # Switching to the new user
-USER ${USR}
-WORKDIR /home/${USR}
+USER $USR
+WORKDIR /home/$USR
 RUN rosdep update
 
 RUN /bin/bash -c "source /opt/ros/lunar/setup.bash"
