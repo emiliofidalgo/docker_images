@@ -58,7 +58,7 @@ RUN /bin/bash -c "source /opt/ros/lunar/setup.bash && \
                   echo 'source ROS/lunar/devel/setup.bash' >> .bashrc"
 
 # Setup entrypoint
-COPY ros_entrypoint.sh .
+COPY ./ros_entrypoint.sh .
 
 ENTRYPOINT ["ros_entrypoint.sh"]
 CMD ["bash"]
