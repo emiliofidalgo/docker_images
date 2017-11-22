@@ -39,7 +39,7 @@ RUN groupadd -r $USR
 # Adding a user
 RUN useradd --no-log-init --create-home --shell /bin/bash --system --gid $USR $USR
 # Setting the corresponding password
-RUN echo '$USR:$USR' | chpasswd
+RUN echo $USR:$USR | chpasswd
 # Adding the user to sudo group
 RUN adduser $USR sudo
 
