@@ -57,8 +57,4 @@ RUN /bin/bash -c "source /opt/ros/lunar/setup.bash && \
                   catkin_make && \
                   echo 'source ROS/lunar/devel/setup.bash' >> .bashrc"
 
-# Setup entrypoint
-COPY files/* .
-
-ENTRYPOINT ["ros_entrypoint.sh"]
 CMD ["bash"]
