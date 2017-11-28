@@ -24,8 +24,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Adding a user and a group
-RUN groupadd -r $USER && \
-    useradd --no-log-init --create-home --shell /bin/bash --system --gid $USER $USER && \
+RUN useradd --no-log-init --create-home --shell /bin/bash --user-group $USER && \
     echo $USER:$USER | chpasswd && \
     adduser $USER sudo
 
