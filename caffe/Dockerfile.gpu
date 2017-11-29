@@ -5,6 +5,8 @@ LABEL maintainer="Emilio Garcia-Fidalgo"
 
 # Parameters
 ARG USER
+ARG UID
+ARG GID
 ARG DEBIAN_FRONTEND=noninteractive
 
 # Installing some software
@@ -24,7 +26,9 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Adding a user and a group
-RUN useradd --no-log-init --create-home --shell /bin/bash --user-group $USER && \
+RUN groupadd -g $GID $USER && \
+    useradd --no-log-init --create-home --shell /bin/bash -u $UID -g $GID $USER && \
+    chown -R $USER:$USER /home/$USER && \
     echo $USER:$USER | chpasswd && \
     adduser $USER sudo
 
