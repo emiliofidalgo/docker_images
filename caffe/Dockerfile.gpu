@@ -4,9 +4,9 @@ FROM bvlc/caffe:gpu
 LABEL maintainer="Emilio Garcia-Fidalgo"
 
 # Parameters
-ARG USER
-ARG UID
-ARG GID
+ARG USER=caffe
+ARG UID=1001
+ARG GID=1001
 ARG DEBIAN_FRONTEND=noninteractive
 
 # Installing some software
